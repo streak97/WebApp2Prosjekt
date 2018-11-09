@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp2Prosjekt", "WebApp2Prosjekt\WebApp2Prosjekt.csproj", "{236584FB-00B4-422E-979B-44A0B95636B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControllerTest", "ControllerTest\ControllerTest.csproj", "{4ECE5FD8-1843-4135-9575-30D9B23C1183}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{236584FB-00B4-422E-979B-44A0B95636B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{236584FB-00B4-422E-979B-44A0B95636B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{236584FB-00B4-422E-979B-44A0B95636B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{236584FB-00B4-422E-979B-44A0B95636B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ECE5FD8-1843-4135-9575-30D9B23C1183}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ECE5FD8-1843-4135-9575-30D9B23C1183}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ECE5FD8-1843-4135-9575-30D9B23C1183}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ECE5FD8-1843-4135-9575-30D9B23C1183}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7CAA08B-8720-432E-B4C1-F154D2A89596}
+	EndGlobalSection
+EndGlobal
