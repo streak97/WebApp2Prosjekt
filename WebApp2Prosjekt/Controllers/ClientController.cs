@@ -22,5 +22,10 @@ namespace WebApp2Prosjekt.Controllers
         {
             return View();
         }
+
+        public IActionResult PayForTask()
+        {
+            return View();
+        }
     }
 }
