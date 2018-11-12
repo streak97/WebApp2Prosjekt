@@ -14,6 +14,8 @@ namespace WebApp2Prosjekt.Models
 
         public decimal WagePerLine { get; set; }
 
+        public virtual SpecialityField SpecialityField { get; set; }
+
         public virtual IdentityUser Owner { get; set; }
 
     }

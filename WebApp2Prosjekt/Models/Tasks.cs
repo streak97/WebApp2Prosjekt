@@ -14,6 +14,9 @@ namespace WebApp2Prosjekt.Models
 
         public string Description { get; set; }
 
+        public int SpecialityFieldId { get; set; }
+        public virtual SpecialityField SpecialityField { get; set; }
+
         public bool Complete { get; set; }
 
         public int Lines { get; set; }
