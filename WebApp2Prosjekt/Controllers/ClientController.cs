@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp2Prosjekt.Controllers
 {
+    [Authorize(Roles = "ClientAccess")]
     public class ClientController : Controller
     {
         public IActionResult Index()

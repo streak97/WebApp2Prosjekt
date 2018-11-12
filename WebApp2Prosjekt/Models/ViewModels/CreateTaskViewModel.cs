@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,5 +19,7 @@ namespace WebApp2Prosjekt.Models.ViewModels
         public string Description { get; set; }
         
         public List<SpecialityField> SpecialityFields { get; set; }
+
+        public List<IdentityUser> Developers { get; set; }
     }
 }
