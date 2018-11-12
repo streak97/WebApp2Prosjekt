@@ -184,6 +184,73 @@ namespace WebApp2Prosjekt.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("WebApp2Prosjekt.Models.Profile", b =>
+                {
+                    b.Property<int>("ProfileId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("LinesWritten");
+
+                    b.Property<string>("OwnerId");
+
+                    b.Property<int?>("SpecialityFieldId");
+
+                    b.Property<decimal>("WagePerLine");
+
+                    b.HasKey("ProfileId");
+
+                    b.HasIndex("OwnerId");
+
+                    b.HasIndex("SpecialityFieldId");
+
+                    b.ToTable("Profiles");
+                });
+
+            modelBuilder.Entity("WebApp2Prosjekt.Models.SpecialityField", b =>
+                {
+                    b.Property<int>("SpecialityFieldId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Type");
+
+                    b.HasKey("SpecialityFieldId");
+
+                    b.ToTable("SpecialityFields");
+                });
+
+            modelBuilder.Entity("WebApp2Prosjekt.Models.Tasks", b =>
+                {
+                    b.Property<int>("TasksId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClientId");
+
+                    b.Property<bool>("Complete");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("FreelancerId");
+
+                    b.Property<int>("Lines");
+
+                    b.Property<int>("SpecialityFieldId");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("TasksId");
+
+                    b.HasIndex("ClientId");
+
+                    b.HasIndex("FreelancerId");
+
+                    b.HasIndex("SpecialityFieldId");
+
+                    b.ToTable("Tasks");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole")
@@ -226,6 +293,33 @@ namespace WebApp2Prosjekt.Data.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser")
                         .WithMany()
                         .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("WebApp2Prosjekt.Models.Profile", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerId");
+
+                    b.HasOne("WebApp2Prosjekt.Models.SpecialityField", "SpecialityField")
+                        .WithMany()
+                        .HasForeignKey("SpecialityFieldId");
+                });
+
+            modelBuilder.Entity("WebApp2Prosjekt.Models.Tasks", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId");
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Freelancer")
+                        .WithMany()
+                        .HasForeignKey("FreelancerId");
+
+                    b.HasOne("WebApp2Prosjekt.Models.SpecialityField", "SpecialityField")
+                        .WithMany()
+                        .HasForeignKey("SpecialityFieldId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

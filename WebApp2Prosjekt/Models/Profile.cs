@@ -12,7 +12,6 @@ namespace WebApp2Prosjekt.Models
     /// </summary>
     public class Profile
     {
-        [Key]
         public int ProfileId { get; set; }
 
         /// Lines written this month

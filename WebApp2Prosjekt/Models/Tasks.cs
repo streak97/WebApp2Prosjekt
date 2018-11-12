@@ -9,8 +9,7 @@ namespace WebApp2Prosjekt.Models
 {
     public class Tasks
     {
-        [Key]
-        public int TaskId { get; set; }
+        public int TasksId { get; set; }
 
         public string Title { get; set; }
 
