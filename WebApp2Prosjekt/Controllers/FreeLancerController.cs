@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp2Prosjekt.Controllers
 {
-    public class FreeLancerController : Controller
+    public class FreelancerController : Controller
     {
         public IActionResult Index()
         {
