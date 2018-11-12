@@ -49,6 +49,15 @@ namespace WebApp2Prosjekt
                 config.Filters.Add(new AuthorizeFilter(policy));
             })
        .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddAuthorization(option =>
+            {
+                option.AddPolicy("AdminOnly", policy => policy.RequireRole("Administrator"));
+                option.AddPolicy("DevAccess", policy => policy.RequireRole("Administrator", "Developer"));
+                option.AddPolicy("TaskAccess", policy => policy.RequireRole("Administrator", "Developer", "Freelancer"));
+                option.AddPolicy("FreeLancerAccess", policy => policy.RequireRole("Administrator", "Freelancer"));
+                option.AddPolicy("ClientAccess", policy => policy.RequireRole("Administrator", "Client"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
