@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,6 +9,7 @@ namespace WebApp2Prosjekt.Models
 {
     public class Tasks
     {
+        [Key]
         public int TaskId { get; set; }
 
         public string Title { get; set; }

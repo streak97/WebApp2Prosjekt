@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp2Prosjekt.Controllers
 {
+    /// <summary>
+    /// Controller for REST-api views
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class APIController : ControllerBase

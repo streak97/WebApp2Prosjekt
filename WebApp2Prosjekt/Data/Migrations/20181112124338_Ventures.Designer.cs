@@ -10,7 +10,7 @@ using WebApp2Prosjekt.Data;
 namespace WebApp2Prosjekt.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181112092548_Ventures")]
+    [Migration("20181112124338_Ventures")]
     partial class Ventures
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

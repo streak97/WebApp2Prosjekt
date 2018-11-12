@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp2Prosjekt.Controllers
 {
+    /// <summary>
+    /// Controller for client views
+    /// </summary>
     [Authorize(Roles = "ClientAccess")]
     public class ClientController : Controller
     {

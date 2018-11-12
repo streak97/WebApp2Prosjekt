@@ -18,6 +18,7 @@ namespace WebApp2Prosjekt.Models
                 var context = new ApplicationDbContext(app.GetRequiredService<DbContextOptions<ApplicationDbContext>>())
                 )
             {
+                //Adds roles and default users
                 if (!context.Users.Any())
                 {
 
@@ -67,7 +68,22 @@ namespace WebApp2Prosjekt.Models
                     UserManager.AddToRoleAsync(dev8, "Developer");
                     UserManager.AddToRoleAsync(dev9, "Developer");
                 }
+
+                if (!context.SpecialityFields.Any())
+                {
+                    context.SpecialityFields.AddRange(
+                        new SpecialityField { Type = "Web" },
+                        new SpecialityField { Type = "System" },
+                        new SpecialityField { Type = "Active Directory" },
+                        new SpecialityField { Type = "Artificial Intelligence" },
+                        new SpecialityField { Type = "Smelly Code" },
+                        new SpecialityField { Type = "Database"}
+                        );
+
+                    context.SaveChanges();
+                }
             }
+
 
         }
     }

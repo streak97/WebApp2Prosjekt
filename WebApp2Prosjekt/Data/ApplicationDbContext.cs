@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using WebApp2Prosjekt.Models;
 
 namespace WebApp2Prosjekt.Data
 {
@@ -12,5 +13,9 @@ namespace WebApp2Prosjekt.Data
             : base(options)
         {
         }
+
+        public virtual DbSet<Profile> Profiles { get; set; }
+        public virtual DbSet<SpecialityField> SpecialityFields { get; set; }
+        public virtual DbSet<Tasks> Tasks { get; set; }
     }
 }

@@ -50,6 +50,7 @@ namespace WebApp2Prosjekt
             })
        .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            //Policies for access
             services.AddAuthorization(option =>
             {
                 option.AddPolicy("AdminOnly", policy => policy.RequireRole("Administrator"));

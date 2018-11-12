@@ -8,6 +8,10 @@ using WebApp2Prosjekt.Models;
 
 namespace WebApp2Prosjekt.Controllers
 {
+    /// <summary>
+    /// Main controller
+    /// </summary>
+
     public class HomeController : Controller
     {
         public IActionResult Index()
