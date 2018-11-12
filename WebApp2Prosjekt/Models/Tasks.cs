@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WebApp2Prosjekt.Models
 {
-    public class Task
+    public class Tasks
     {
         public int TaskId { get; set; }
 
