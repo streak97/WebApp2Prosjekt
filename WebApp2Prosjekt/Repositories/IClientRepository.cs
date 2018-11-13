@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebApp2Prosjekt.Repositories
 {
-    interface IClientRepositorycs
+    interface IClientRepository
     {
     }
 }
