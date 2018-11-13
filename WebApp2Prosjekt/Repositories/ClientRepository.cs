@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApp2Prosjekt.Models;
 using WebApp2Prosjekt.Models.ViewModels;
 
 namespace WebApp2Prosjekt.Repositories
@@ -14,6 +15,11 @@ namespace WebApp2Prosjekt.Repositories
         }
 
         public void EditTask(CreateTaskViewModel ctvm)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Tasks> GetAllTasks(string username)
         {
             throw new NotImplementedException();
         }

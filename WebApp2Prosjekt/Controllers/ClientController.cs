@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebApp2Prosjekt.Models;
 using WebApp2Prosjekt.Models.ViewModels;
 using WebApp2Prosjekt.Repositories;
 
@@ -51,7 +52,8 @@ namespace WebApp2Prosjekt.Controllers
 
         public IActionResult PayForTask()
         {
-            return View();
+            IEnumerable<Tasks> tasks = repository.GetAllTasks(User.Identity.Name);
+            return View(tasks);
         }
     }
 }

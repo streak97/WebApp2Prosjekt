@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApp2Prosjekt.Models;
 using WebApp2Prosjekt.Models.ViewModels;
 
 namespace WebApp2Prosjekt.Repositories
@@ -11,5 +12,6 @@ namespace WebApp2Prosjekt.Repositories
         Task AddNewTask(CreateTaskViewModel ctvm, string username);
         CreateTaskViewModel GetCreateTaskViewModel();
         void EditTask(CreateTaskViewModel ctvm);
+        List<Tasks> GetAllTasks(string username);
     }
 }
