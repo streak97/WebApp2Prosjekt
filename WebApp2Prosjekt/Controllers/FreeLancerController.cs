@@ -24,7 +24,7 @@ namespace WebApp2Prosjekt.Controllers
             return View();
         }
 
-        public IActionResult SubmitTask()
+        public IActionResult CompleteTask()
         {
             return View();
         }

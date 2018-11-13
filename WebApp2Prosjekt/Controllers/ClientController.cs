@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebApp2Prosjekt.Models.ViewModels;
 
 namespace WebApp2Prosjekt.Controllers
 {
@@ -20,7 +21,21 @@ namespace WebApp2Prosjekt.Controllers
 
         public IActionResult SubmitTask()
         {
+            //TODO: get a createtaskviewmodel
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult SubmitTask([Bind("Title, Description, SpecialityFieldId, DeveloperId")] CreateTaskViewModel ctvm)
+        {
+            try
+            {
+                //TODO: Add to repository
+                return RedirectToAction("Index");
+            } catch
+            {
+                return View();
+            }
         }
 
         public IActionResult PayForTask()

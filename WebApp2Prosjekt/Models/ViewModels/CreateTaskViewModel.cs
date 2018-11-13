@@ -22,6 +22,9 @@ namespace WebApp2Prosjekt.Models.ViewModels
         [DataType(DataType.MultilineText)]
         [Required(ErrorMessage = "Describe the task")]
         public string Description { get; set; }
+
+        public int SpecialityFieldId { get; set; }
+        public int DeveloperId { get; set; }
         
         //Possible to choose a field
         public List<SpecialityField> SpecialityFields { get; set; }
