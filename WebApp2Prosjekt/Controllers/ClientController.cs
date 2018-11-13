@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApp2Prosjekt.Models.ViewModels;
+using WebApp2Prosjekt.Repositories;
 
 namespace WebApp2Prosjekt.Controllers
 {
@@ -14,6 +15,13 @@ namespace WebApp2Prosjekt.Controllers
     [Authorize(Roles = "ClientAccess")]
     public class ClientController : Controller
     {
+        private IClientRepository repository;
+
+        public ClientController(IClientRepository repository)
+        {
+            this.repository = repository;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -22,7 +30,8 @@ namespace WebApp2Prosjekt.Controllers
         public IActionResult SubmitTask()
         {
             //TODO: get a createtaskviewmodel
-            return View();
+            var ctvm = repository.GetCreateTaskViewModel();
+            return View(ctvm);
         }
 
         [HttpPost]
@@ -31,6 +40,8 @@ namespace WebApp2Prosjekt.Controllers
             try
             {
                 //TODO: Add to repository
+                var user = User.Identity.Name;
+                repository.AddNewTask(ctvm, user).Wait();
                 return RedirectToAction("Index");
             } catch
             {
