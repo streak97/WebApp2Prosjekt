@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebApp2Prosjekt.Repositories;
 
 namespace WebApp2Prosjekt.Controllers
 {
@@ -13,6 +14,12 @@ namespace WebApp2Prosjekt.Controllers
     [Authorize(Policy = "TaskAccess")]
     public class FreelancerController : Controller
     {
+        private IDeveloperRepository _repository;
+
+        public FreelancerController(IDeveloperRepository repository)
+        {
+            _repository = repository;
+        }
 
         public IActionResult Index()
         {
