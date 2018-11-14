@@ -24,7 +24,7 @@ namespace WebApp2Prosjekt.Models.ViewModels
         public string Description { get; set; }
 
         public int SpecialityFieldId { get; set; }
-        public int DeveloperId { get; set; }
+        public string DeveloperId { get; set; }
         
         //Possible to choose a field
         public List<SpecialityField> SpecialityFields { get; set; }

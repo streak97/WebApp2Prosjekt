@@ -29,6 +29,11 @@ namespace WebApp2Prosjekt.Controllers
             return View();
         }
 
+        public IActionResult GetPayed()
+        {
+            return View();
+        }
+
         public IActionResult SeeProfile()
         {
             return View();
