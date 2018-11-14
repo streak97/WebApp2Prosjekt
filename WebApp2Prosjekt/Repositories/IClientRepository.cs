@@ -10,7 +10,7 @@ namespace WebApp2Prosjekt.Repositories
     public interface IClientRepository
     {
         Task AddNewTask(CreateTaskViewModel ctvm, string username);
-        CreateTaskViewModel GetCreateTaskViewModel();
+        Task<CreateTaskViewModel> GetCreateTaskViewModel();
         void EditTask(CreateTaskViewModel ctvm);
         List<Tasks> GetAllTasks(string username);
     }

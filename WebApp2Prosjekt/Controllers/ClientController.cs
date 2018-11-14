@@ -40,7 +40,6 @@ namespace WebApp2Prosjekt.Controllers
         {
             try
             {
-                //TODO: Add to repository
                 var user = User.Identity.Name;
                 repository.AddNewTask(ctvm, user).Wait();
                 return RedirectToAction("Index");

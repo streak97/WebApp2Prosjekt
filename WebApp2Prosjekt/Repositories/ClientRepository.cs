@@ -12,21 +12,21 @@ namespace WebApp2Prosjekt.Repositories
     public class ClientRepository : IClientRepository
     {
         private ApplicationDbContext _context;
-        private UserManager<IdentityUser> _manager;
+        private UserManager<IdentityUser> _userManager;
 
-        public ClientRepository(UserManager<IdentityUser> manager, ApplicationDbContext context)
+        public ClientRepository(UserManager<IdentityUser> userManager, ApplicationDbContext context)
         {
-            _manager = manager;
+            _userManager = userManager;
             _context = context;
         }
 
         public async Task AddNewTask(CreateTaskViewModel ctvm, string username)
         {
-            var clientUser = await _manager.FindByNameAsync(username);
+            var clientUser = await _userManager.FindByNameAsync(username);
             Tasks task = new Tasks();
             if (ctvm.DeveloperId != "")
             {
-                var devUser = await _manager.FindByIdAsync(ctvm.DeveloperId);
+                var devUser = await _userManager.FindByIdAsync(ctvm.DeveloperId);
                 task.Freelancer = devUser ?? throw new ArgumentException();
             }
 
@@ -55,9 +55,15 @@ namespace WebApp2Prosjekt.Repositories
             throw new NotImplementedException();
         }
 
-        public CreateTaskViewModel GetCreateTaskViewModel()
+        public async Task<CreateTaskViewModel> GetCreateTaskViewModel()
         {
-            throw new NotImplementedException();
+            CreateTaskViewModel ctvm = new CreateTaskViewModel();
+
+            ctvm.SpecialityFields = _context.SpecialityFields.ToList();
+            ctvm.Developers = (List<IdentityUser>)await _userManager.GetUsersInRoleAsync("Freelancer");
+            ctvm.Developers.AddRange((List<IdentityUser>)await _userManager.GetUsersInRoleAsync("Developer"));
+
+            return ctvm;
         }
     }
 }
