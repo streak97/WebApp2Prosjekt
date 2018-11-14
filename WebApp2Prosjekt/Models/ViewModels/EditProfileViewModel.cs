@@ -16,6 +16,7 @@ namespace WebApp2Prosjekt.Models.ViewModels
         [DefaultValue(1.00)]
         public decimal WagePerLine { get; set; }
 
+        [DefaultValue(1)]
         public int SpecialityFieldId { get; set; }
         public List<SpecialityField> SpecialityFields { get; set; }
 

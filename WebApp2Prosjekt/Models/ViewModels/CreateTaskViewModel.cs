@@ -12,6 +12,7 @@ namespace WebApp2Prosjekt.Models.ViewModels
     /// </summary>
     public class CreateTaskViewModel
     {
+        public int TasksId { get; set; }
 
         //Task title
         [DataType(DataType.Text)]

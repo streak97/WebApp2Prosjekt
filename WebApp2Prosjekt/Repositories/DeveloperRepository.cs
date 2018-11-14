@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApp2Prosjekt.Data;
@@ -22,37 +23,103 @@ namespace WebApp2Prosjekt.Repositories
 
         public async Task<List<Tasks>> GetDevelopersTasks(string username)
         {
-            throw new NotImplementedException();
+            var dev = await _userManager.FindByNameAsync(username);
+
+            List<Tasks> list = _context.Tasks.Where(x => x.Freelancer.Id == dev.Id ).ToList();
+
+            return list;
         }
 
         public async Task<EditProfileViewModel> GetEditProfileViewModel(string username)
         {
-            throw new NotImplementedException();
+            var dev = await _userManager.FindByNameAsync(username);
+
+            if (!_context.Profiles.Any(x => x.Owner.Id == dev.Id))
+            {
+                await AddProfile(username);
+            }
+
+            Profile p = _context.Profiles.Where(x => x.Owner.Id == dev.Id).SingleOrDefault() ?? throw new ArgumentException();
+
+            EditProfileViewModel epvm = new EditProfileViewModel
+            {
+                OwnerUserName = dev.UserName,
+                ProfileId = p.ProfileId,
+                LinesWritten = p.LinesWritten,
+                WagePerLine = p.WagePerLine,
+                SpecialityFieldId = p.SpecialityField.SpecialityFieldId
+            };
+
+            epvm.SpecialityFields = _context.SpecialityFields.ToList();
+
+            return epvm;
+        }
+
+        public EditTaskViewModel GetEditTaskViewModel(int taskId)
+        {
+            var task = _context.Tasks.Where(x => x.TasksId == taskId).FirstOrDefault();
+
+            EditTaskViewModel etvm = new EditTaskViewModel
+            {
+                TasksId = task.TasksId,
+                Title = task.Title,
+                Description = task.Description,
+                SpecialityFieldId = task.SpecialityFieldId,
+                Complete = task.Complete,
+                Lines = task.Lines
+            };
+
+            return etvm;
         }
 
         public List<Tasks> GetTasksForReview()
         {
-            throw new NotImplementedException();
+            return _context.Tasks.Where(x => x.Lines > 0).ToList();
         }
 
-        public List<Tasks> GetUnavailableBySpecialityTasks(string speciality)
+        public List<Tasks> GetUnavailableBySpecialityTasks(int specialityId)
         {
-            throw new NotImplementedException();
+            return _context.Tasks.Where(x => x.SpecialityFieldId == specialityId && x.Freelancer == null).ToList();
         }
 
         public List<Tasks> GetUnavailableTasks()
         {
-            throw new NotImplementedException();
+            return _context.Tasks.Where(x => x.Freelancer == null).ToList();
+        }
+
+        public void SetDeveloperTask(int taskId, string devId)
+        {
+            var task = _context.Tasks.First(x => x.TasksId == taskId);
+
+            task.Freelancer = _context.Users.First(x => x.Id == devId);
+
+            _context.SaveChanges();
+
         }
 
         public void UpdateProfile(EditProfileViewModel epvm)
         {
-            throw new NotImplementedException();
+            var profile = _context.Profiles.Where(x => x.ProfileId == epvm.ProfileId).SingleOrDefault();
+
+            profile.LinesWritten = epvm.LinesWritten;
+            profile.WagePerLine = epvm.WagePerLine;
+            profile.SpecialityFieldId = epvm.SpecialityFieldId;
+
+            _context.SaveChanges();
         }
 
-        public void UpdateTask(CreateTaskViewModel ctvm)
+        public void UpdateTask(EditTaskViewModel etvm)
         {
-            throw new NotImplementedException();
+            var task = _context.Tasks.Where(x => x.TasksId == etvm.TasksId).FirstOrDefault();
+
+            task.Title = etvm.Title;
+            task.Description = etvm.Description;
+            task.SpecialityFieldId = etvm.SpecialityFieldId;
+            task.Complete = etvm.Complete;
+            task.Lines = etvm.Lines;
+
+            _context.SaveChanges();
+
         }
 
         private async Task AddProfile(string username)

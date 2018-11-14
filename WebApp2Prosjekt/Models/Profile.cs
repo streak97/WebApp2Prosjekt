@@ -20,6 +20,9 @@ namespace WebApp2Prosjekt.Models
         //Payment per line
         public decimal WagePerLine { get; set; }
 
+        //Speciality ID
+        public int SpecialityFieldId { get; set; }
+
         //Field of speciality
         public virtual SpecialityField SpecialityField { get; set; }
 
