@@ -22,6 +22,9 @@ namespace WebApp2Prosjekt.Models
         [DefaultValue(false)]
         public bool Complete { get; set; }
 
+        [DefaultValue(false)]
+        public bool Paid { get; set; }
+
         [DefaultValue(0)]
         public int Lines { get; set; }
 

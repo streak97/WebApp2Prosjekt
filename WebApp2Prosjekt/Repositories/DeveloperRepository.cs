@@ -86,21 +86,21 @@ namespace WebApp2Prosjekt.Repositories
             return _context.Tasks.Where(x => x.Lines > 0).ToList();
         }
 
-        public List<Tasks> GetUnavailableBySpecialityTasks(int specialityId)
+        public List<Tasks> GetAvailableBySpecialityTasks(int specialityId)
         {
             return _context.Tasks.Where(x => x.SpecialityFieldId == specialityId && x.Freelancer == null).ToList();
         }
 
-        public List<Tasks> GetUnavailableTasks()
+        public List<Tasks> GetAvailableTasks()
         {
             return _context.Tasks.Where(x => x.Freelancer == null).ToList();
         }
 
-        public void SetDeveloperTask(int taskId, string devId)
+        public void SetDeveloperTask(int taskId, string devName)
         {
             var task = _context.Tasks.First(x => x.TasksId == taskId);
 
-            task.Freelancer = _context.Users.First(x => x.Id == devId);
+            task.Freelancer = _context.Users.First(x => x.UserName == devName);
 
             _context.SaveChanges();
 

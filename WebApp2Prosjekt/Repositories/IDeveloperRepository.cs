@@ -9,8 +9,8 @@ namespace WebApp2Prosjekt.Repositories
 {
     public interface IDeveloperRepository
     {
-        List<Tasks> GetUnavailableTasks();
-        List<Tasks> GetUnavailableBySpecialityTasks(int specialityId);
+        List<Tasks> GetAvailableTasks();
+        List<Tasks> GetAvailableBySpecialityTasks(int specialityId);
 
         Task<List<Tasks>> GetDevelopersTasks(string username);
 
@@ -26,6 +26,6 @@ namespace WebApp2Prosjekt.Repositories
 
         EditTaskViewModel GetEditTaskViewModel(int taskId);
 
-        void SetDeveloperTask(int taskId, string devId);
+        void SetDeveloperTask(int taskId, string devName);
     }
 }
