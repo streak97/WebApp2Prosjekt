@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApp2Prosjekt.Models;
 
@@ -11,11 +12,24 @@ namespace WebApp2Prosjekt.Controllers
     /// <summary>
     /// Main controller
     /// </summary>
-
+    [Authorize]
     public class HomeController : Controller
     {
         public IActionResult Index()
         {
+            if (User.IsInRole("Client"))
+            {
+                return RedirectToAction("Index", "Client");
+            } else if (User.IsInRole("Freelancer"))
+            {
+                return RedirectToAction("Index", "Freelancer");
+            } else if (User.IsInRole("Developer"))
+            {
+                return RedirectToAction("Index", "Developer");
+            } else if (User.IsInRole("Administrator"))
+            {
+                return View("AdminIndex");
+            }
             return View();
         }
 
