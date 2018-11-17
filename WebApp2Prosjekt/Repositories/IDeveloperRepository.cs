@@ -18,6 +18,8 @@ namespace WebApp2Prosjekt.Repositories
 
         void UpdateTask(EditTaskViewModel ctvm);
 
+        void CompleteTask(Tasks task);
+
         Task<EditProfileViewModel> GetEditProfileViewModel(string username);
 
         void UpdateProfile(EditProfileViewModel epvm);

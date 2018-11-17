@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebApp2Prosjekt.Models;
 using WebApp2Prosjekt.Repositories;
 
 namespace WebApp2Prosjekt.Controllers
@@ -28,7 +29,21 @@ namespace WebApp2Prosjekt.Controllers
 
         public IActionResult ReviewTasks()
         {
-            return View();
+            return View(_repository.GetTasksForReview());
+        }
+
+        [HttpPost]
+        public IActionResult ReviewTasks([Bind("TasksId, Complete")]Tasks t)
+        {
+            try
+            {
+                _repository.CompleteTask(t);
+                return RedirectToAction("ReviewTasks");
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

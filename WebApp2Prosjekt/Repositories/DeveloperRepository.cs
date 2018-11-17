@@ -21,6 +21,15 @@ namespace WebApp2Prosjekt.Repositories
             _userManager = userManager;
         }
 
+        public void CompleteTask(Tasks task)
+        {
+            var t = _context.Tasks.Where(x => x.TasksId == task.TasksId).FirstOrDefault();
+
+            t.Complete = task.Complete;
+
+            _context.SaveChanges();
+        }
+
         public async Task<List<Tasks>> GetDevelopersTasks(string username)
         {
             var dev = await _userManager.FindByNameAsync(username);
