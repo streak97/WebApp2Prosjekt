@@ -16,21 +16,21 @@ namespace WebApp2Prosjekt.Controllers
     [Authorize(Roles = "ClientAccess")]
     public class ClientController : Controller
     {
-        private IClientRepository repository;
+        private IClientRepository _repository;
 
         public ClientController(IClientRepository repository)
         {
-            this.repository = repository;
+            this._repository = repository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_repository.GetAllTasks(User.Identity.Name));
         }
 
         public IActionResult SubmitTask()
         {
-            var ctvm = repository.GetCreateTaskViewModel();
+            var ctvm = _repository.GetCreateTaskViewModel();
             return View(ctvm);
         }
 
@@ -40,7 +40,7 @@ namespace WebApp2Prosjekt.Controllers
             try
             {
                 var user = User.Identity.Name;
-                repository.AddNewTask(ctvm, user).Wait();
+                _repository.AddNewTask(ctvm, user).Wait();
                 return RedirectToAction("Index");
             } catch
             {
@@ -48,9 +48,10 @@ namespace WebApp2Prosjekt.Controllers
             }
         }
 
+        //May be redundant
         public IActionResult PayForTask()
         {
-            IEnumerable<Tasks> tasks = repository.GetAllTasks(User.Identity.Name);
+            IEnumerable<Tasks> tasks = _repository.GetAllTasks(User.Identity.Name);
             return View(tasks);
         }
     }
