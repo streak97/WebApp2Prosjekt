@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebApp2Prosjekt.Models.ViewModels;
 using WebApp2Prosjekt.Repositories;
 
 namespace WebApp2Prosjekt.Controllers
@@ -23,19 +24,45 @@ namespace WebApp2Prosjekt.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(_repository.GetDevelopersTasks(User.Identity.Name));
         }
 
         public IActionResult FindTask()
         {
-            return View();
+            return View(_repository.GetAvailableTasks());
         }
-
-        public IActionResult UpdateTask()
+        public IActionResult ClaimTask(int taskId)
         {
-            return View();
+            try
+            {
+                _repository.SetDeveloperTask(taskId, User.Identity.Name);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View("FindTask");
+            }
         }
 
+        public IActionResult UpdateTask(int taskId)
+        {
+            return View(_repository.GetEditTaskViewModel(taskId));
+        }
+
+        [HttpPost]
+        public IActionResult UpdateTask([Bind("TasksId, Title, Description, SpecialityFieldId, Complete, Lines")]EditTaskViewModel etvm)
+        {
+            try
+            {
+                _repository.UpdateTask(etvm);
+                return RedirectToAction("Index");
+            } catch
+            {
+                return View();
+            }
+        }
+
+        //May be redundant
         public IActionResult GetPayed()
         {
             return View();
@@ -43,7 +70,21 @@ namespace WebApp2Prosjekt.Controllers
 
         public IActionResult SeeProfile()
         {
-            return View();
+            return View(_repository.GetEditProfileViewModel(User.Identity.Name));
+        }
+
+        [HttpPost]
+        public IActionResult SeeProfile([Bind("ProfileId, LinesWritten, WagePerLine, SpecialityFieldId")]EditProfileViewModel epvm)
+        {
+            try
+            {
+                _repository.UpdateProfile(epvm);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }
