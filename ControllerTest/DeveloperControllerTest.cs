@@ -93,6 +93,7 @@ namespace ControllerTesting
 
             Assert.IsNotNull(res);
             _repository.VerifyAll();
+            Assert.IsInstanceOfType(res, typeof(RedirectToActionResult));
         }
     }
 }

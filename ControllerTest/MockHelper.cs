@@ -25,6 +25,7 @@ namespace ProductUnitTest {
             {
                 new Claim(ClaimTypes.Name, "username"),
                 new Claim(ClaimTypes.NameIdentifier, "userId"),
+                new Claim(ClaimTypes.Role, "Client"),
                 new Claim("name", "Ola Nordman"), };
             var identity = new ClaimsIdentity(claims, "TestAuthType");
             var user = new ClaimsPrincipal(identity);

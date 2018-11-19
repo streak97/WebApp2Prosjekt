@@ -30,7 +30,7 @@ namespace WebApp2Prosjekt.Controllers
             {
                 return View("AdminIndex");
             }
-            return View();
+            return View("Index");
         }
 
         public IActionResult About()
