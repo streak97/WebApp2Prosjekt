@@ -17,14 +17,12 @@ namespace ControllerTesting
     public class DeveloperControllerTest
     {
         Mock<IDeveloperRepository> _repository;
-        Mock<UserManager<IdentityUser>> _userManager;
 
         DeveloperController _controller;
 
         [TestInitialize]
         public void Setup()
         {
-            _userManager = MockHelper.MockUserManager<IdentityUser>();
             _repository = new Mock<IDeveloperRepository>();
         }
 
@@ -63,7 +61,7 @@ namespace ControllerTesting
         }
 
         [TestMethod]
-        public void ReviewTasksPostDataUpdateNoError()
+        public void ReviewTasksPostDataUpdateError()
         {
             _repository.Setup(x => x.CompleteTask(It.IsAny<Tasks>())).Throws(new Exception());
 
@@ -80,7 +78,7 @@ namespace ControllerTesting
         }
 
         [TestMethod]
-        public void ReviewTasksPostDataUpdateError()
+        public void ReviewTasksPostDataUpdateNoError()
         {
             _repository.Setup(x => x.CompleteTask(It.IsAny<Tasks>()));
 

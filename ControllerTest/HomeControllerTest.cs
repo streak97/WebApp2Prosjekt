@@ -13,14 +13,12 @@ namespace ControllerTesting
     [TestClass]
     public class HomeControllerTest
     {
-        Mock<UserManager<IdentityUser>> _userManager;
 
         HomeController _controller;
 
         [TestInitialize]
         public void Setup()
         {
-            _userManager = MockHelper.MockUserManager<IdentityUser>();
         }
 
         [TestMethod]
