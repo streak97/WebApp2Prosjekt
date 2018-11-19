@@ -20,7 +20,7 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SpecialityFieldId)
+                @Html.DisplayNameFor(model => model.SpecialityField.Type)
             </th>
             <th></th>
         </tr>
@@ -35,7 +35,7 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SpecialityFieldId)
+                @Html.DisplayFor(modelItem => item.SpecialityField.Type)
             </td>
             <td>
                 @Html.ActionLink("Take", "ClaimTask", new { taskId=item.TasksId })

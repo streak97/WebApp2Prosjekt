@@ -30,13 +30,10 @@
             </div>
             <div class="form-group">
                 <label asp-for="SpecialityFieldId" class="control-label"></label>
-                <input asp-for="SpecialityFieldId" class="form-control" />
+                <select asp-for="SpecialityFieldId" asp-items="@(new SelectList(Model.SpecialityFields, "SpecialityFieldId", "Type"))" class="form-control">
+                    <option>---Set a field of proffesion---</option>
+                </select>
                 <span asp-validation-for="SpecialityFieldId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OwnerUserName" class="control-label"></label>
-                <input asp-for="OwnerUserName" class="form-control" />
-                <span asp-validation-for="OwnerUserName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />

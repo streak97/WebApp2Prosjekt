@@ -16,6 +16,7 @@ namespace WebApp2Prosjekt.Models
 
         public string Description { get; set; }
 
+        [DefaultValue(null)]
         public int SpecialityFieldId { get; set; }
         public virtual SpecialityField SpecialityField { get; set; }
 

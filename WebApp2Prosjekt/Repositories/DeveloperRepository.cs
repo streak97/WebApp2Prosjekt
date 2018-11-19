@@ -93,7 +93,7 @@ namespace WebApp2Prosjekt.Repositories
 
         public List<Tasks> GetAvailableTasks()
         {
-            return _context.Tasks.Where(x => x.Freelancer == null).ToList();
+            return _context.Tasks.Where(x => x.Freelancer == null).Include(x => x.SpecialityField).ToList();
         }
 
         public void SetDeveloperTask(int taskId, string devName)
