@@ -10,7 +10,7 @@ using WebApp2Prosjekt.Models;
 using WebApp2Prosjekt.Models.ViewModels;
 using WebApp2Prosjekt.Repositories;
 
-namespace ControllerTest
+namespace ControllerTesting
 {
     [TestClass]
     public class ClientControllerTest
