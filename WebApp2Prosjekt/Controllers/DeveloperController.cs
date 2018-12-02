@@ -33,7 +33,7 @@ namespace WebApp2Prosjekt.Controllers
         }
 
         [HttpPost]
-        public IActionResult ReviewTasks([Bind("TasksId, Complete")]Tasks t)
+        public IActionResult ReviewTasks([Bind("TasksId, Complete, Lines")]Tasks t)
         {
             try
             {

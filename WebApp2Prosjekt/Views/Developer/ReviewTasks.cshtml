@@ -54,6 +54,7 @@
                     <div asp-validation-summary="ModelOnly"></div>
                     <input type="hidden" name="TasksId" value="@item.TasksId" />
                     <input type="hidden" name="Complete" value="true" />
+                    <input type="hidden" name="Lines" value="@item.Lines" />
                     <button type="submit" class="btn btn-success">Completed</button>
                 </form>
             </td>
