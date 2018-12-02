@@ -10,7 +10,7 @@ using WebApp2Prosjekt.Data;
 namespace WebApp2Prosjekt.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181112130540_Ventures")]
+    [Migration("20181202125906_Ventures")]
     partial class Ventures
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -196,7 +196,7 @@ namespace WebApp2Prosjekt.Data.Migrations
 
                     b.Property<string>("OwnerId");
 
-                    b.Property<int?>("SpecialityFieldId");
+                    b.Property<int>("SpecialityFieldId");
 
                     b.Property<decimal>("WagePerLine");
 
@@ -237,6 +237,8 @@ namespace WebApp2Prosjekt.Data.Migrations
                     b.Property<string>("FreelancerId");
 
                     b.Property<int>("Lines");
+
+                    b.Property<bool>("Paid");
 
                     b.Property<int>("SpecialityFieldId");
 
@@ -306,7 +308,8 @@ namespace WebApp2Prosjekt.Data.Migrations
 
                     b.HasOne("WebApp2Prosjekt.Models.SpecialityField", "SpecialityField")
                         .WithMany()
-                        .HasForeignKey("SpecialityFieldId");
+                        .HasForeignKey("SpecialityFieldId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WebApp2Prosjekt.Models.Tasks", b =>

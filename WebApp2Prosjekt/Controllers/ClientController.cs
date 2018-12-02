@@ -13,7 +13,7 @@ namespace WebApp2Prosjekt.Controllers
     /// <summary>
     /// Controller for client views
     /// </summary>
-    [Authorize(Roles = "ClientAccess")]
+    [Authorize(Policy = "ClientAccess")]
     public class ClientController : Controller
     {
         private IClientRepository _repository;

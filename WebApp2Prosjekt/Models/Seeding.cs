@@ -33,7 +33,7 @@ namespace WebApp2Prosjekt.Models
             var passwd = "#123QWEasd";
 
             // Admin
-            var admin = new IdentityUser { UserName = "Admin" };
+            var admin = new IdentityUser { UserName = "Admin", EmailConfirmed = true };
             if (UserManager.FindByNameAsync("Admin") == null)
             {
                 UserManager.CreateAsync(admin, passwd).Wait();
@@ -43,7 +43,7 @@ namespace WebApp2Prosjekt.Models
             // Developers
             for (int i = 0; i < 9; i++)
             {
-                var temp = new IdentityUser { UserName = "developer" + i + "@test.no" };
+                var temp = new IdentityUser { UserName = "developer" + i + "@test.no", EmailConfirmed = true };
                 if (UserManager.FindByNameAsync(temp.UserName) == null)
                 {
                     UserManager.CreateAsync(temp, passwd).Wait();
@@ -54,7 +54,7 @@ namespace WebApp2Prosjekt.Models
             // Clients
             for (int i = 0; i < 9; i++)
             {
-                var temp = new IdentityUser { UserName = "client" + i + "@test.no" };
+                var temp = new IdentityUser { UserName = "client" + i + "@test.no", EmailConfirmed = true };
                 if (UserManager.FindByNameAsync(temp.UserName) == null)
                 {
                     UserManager.CreateAsync(temp, passwd).Wait();
@@ -65,7 +65,7 @@ namespace WebApp2Prosjekt.Models
             // Freelancer
             for (int i = 0; i < 9; i++)
             {
-                var temp = new IdentityUser { UserName = "free" + i + "@test.no" };
+                var temp = new IdentityUser { UserName = "free" + i + "@test.no", EmailConfirmed = true };
                 if (UserManager.FindByNameAsync(temp.UserName) == null)
                 {
                     UserManager.CreateAsync(temp, passwd).Wait();
