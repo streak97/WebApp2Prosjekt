@@ -50,6 +50,9 @@ namespace WebApp2Prosjekt
             })
        .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            // Add application services.
+            services.AddMvc();
+
             //Access policies
             services.AddAuthorization(option =>
             {

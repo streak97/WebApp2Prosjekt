@@ -27,8 +27,11 @@ namespace WebApp2Prosjekt
                 try
                 {
                     var context = services.GetRequiredService<ApplicationDbContext>();
+                    var serviceProvider = services.GetRequiredService<IServiceProvider>();
+                    var configuration = services.GetRequiredService<IConfiguration>();
+
                     context.Database.Migrate();
-                    Seeding.Initialize(services);
+                    Seeding.CreateRoles(serviceProvider, configuration).Wait();
                 }
                 catch (Exception ex)
                 {
