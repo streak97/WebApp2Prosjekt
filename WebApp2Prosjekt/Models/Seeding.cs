@@ -33,8 +33,8 @@ namespace WebApp2Prosjekt.Models
             var passwd = "#123QWEasd";
 
             // Admin
-            var admin = new IdentityUser { UserName = "Admin", EmailConfirmed = true };
-            if (UserManager.FindByNameAsync("Admin") == null)
+            var admin = new IdentityUser { UserName = "Admin@test.no", EmailConfirmed = true };
+            if (UserManager.FindByNameAsync("Admin@test.no") == null)
             {
                 UserManager.CreateAsync(admin, passwd).Wait();
                 await UserManager.AddToRoleAsync(admin, "Administrator");
