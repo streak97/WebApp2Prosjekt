@@ -13,6 +13,6 @@ namespace WebApp2Prosjekt.Repositories
         Task<CreateTaskViewModel> GetCreateTaskViewModel();
         void EditTask(CreateTaskViewModel ctvm);
         List<Tasks> GetAllTasks(string username);
-        Task<List<Tasks>> getPaymentTask(string username);
+        Task<List<Tasks>> GetPaymentTask(string username);
     }
 }
