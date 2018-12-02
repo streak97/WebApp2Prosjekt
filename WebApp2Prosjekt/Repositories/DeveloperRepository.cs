@@ -124,6 +124,14 @@ namespace WebApp2Prosjekt.Repositories
             task.Title = etvm.Title;
             task.Description = etvm.Description;
             task.SpecialityFieldId = etvm.SpecialityFieldId;
+
+            if(task.Complete == false && etvm.Complete == true)
+            {
+
+                _context.Profiles.Where(x => x.Owner == task.Freelancer).SingleOrDefault().LinesWritten += etvm.Lines;
+
+            }
+
             task.Complete = etvm.Complete;
             task.Lines = etvm.Lines;
 
