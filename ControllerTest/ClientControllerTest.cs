@@ -61,7 +61,7 @@ namespace ControllerTesting
             Assert.IsNotNull(res);
             _repository.VerifyAll();
             _repository.Verify(x => x.GetCreateTaskViewModel(), Times.Exactly(1));
-            Assert.IsInstanceOfType(res.Model, typeof(Task<CreateTaskViewModel>));
+            Assert.IsInstanceOfType(res.Model, typeof(CreateTaskViewModel));
         }
 
         [TestMethod]
