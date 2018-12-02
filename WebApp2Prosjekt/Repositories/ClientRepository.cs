@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,7 +61,7 @@ namespace WebApp2Prosjekt.Repositories
 
         public List<Tasks> GetAllTasks(string username)
         {
-            return _context.Tasks.Where(x => x.Client.UserName == username).ToList();
+            return _context.Tasks.Where(x => x.Client.UserName == username).Include(x => x.Freelancer).ToList();
         }
 
         public async Task<CreateTaskViewModel> GetCreateTaskViewModel()
