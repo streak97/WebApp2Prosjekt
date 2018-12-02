@@ -11,7 +11,7 @@ namespace WebApp2Prosjekt.BlackIO
     public class BlockIO
     {
         private string ApiKey { get; set; }
-        private string Url = "https://block.io/api/v2/";
+        private readonly string Url = "https://block.io/api/v2/";
 
         public BlockIO(string apiKey)
         {
