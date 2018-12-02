@@ -194,7 +194,7 @@ namespace WebApp2Prosjekt.Data.Migrations
 
                     b.Property<string>("OwnerId");
 
-                    b.Property<int?>("SpecialityFieldId");
+                    b.Property<int>("SpecialityFieldId");
 
                     b.Property<decimal>("WagePerLine");
 
@@ -235,6 +235,8 @@ namespace WebApp2Prosjekt.Data.Migrations
                     b.Property<string>("FreelancerId");
 
                     b.Property<int>("Lines");
+
+                    b.Property<bool>("Paid");
 
                     b.Property<int>("SpecialityFieldId");
 
@@ -304,7 +306,8 @@ namespace WebApp2Prosjekt.Data.Migrations
 
                     b.HasOne("WebApp2Prosjekt.Models.SpecialityField", "SpecialityField")
                         .WithMany()
-                        .HasForeignKey("SpecialityFieldId");
+                        .HasForeignKey("SpecialityFieldId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WebApp2Prosjekt.Models.Tasks", b =>
