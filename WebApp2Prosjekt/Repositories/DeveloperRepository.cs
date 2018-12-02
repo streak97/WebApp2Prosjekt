@@ -122,9 +122,6 @@ namespace WebApp2Prosjekt.Repositories
         public void UpdateTask(EditTaskViewModel etvm)
         {
             var task = _context.Tasks.Where(x => x.TasksId == etvm.TasksId).FirstOrDefault();
-
-            task.Title = etvm.Title;
-            task.Description = etvm.Description;
             
             task.Lines = etvm.Lines;
 
