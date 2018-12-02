@@ -30,7 +30,7 @@ namespace WebApp2Prosjekt.Controllers
 
         public IActionResult SubmitTask()
         {
-            var ctvm = _repository.GetCreateTaskViewModel();
+            var ctvm = _repository.GetCreateTaskViewModel().Result;
             return View(ctvm);
         }
 

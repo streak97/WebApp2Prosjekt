@@ -24,7 +24,7 @@ namespace WebApp2Prosjekt.Controllers
 
         public IActionResult Index()
         {
-            return View(_repository.GetDevelopersTasks(User.Identity.Name));
+            return View(_repository.GetDevelopersTasks(User.Identity.Name).Result);
         }
 
         public IActionResult FindTask()
@@ -70,7 +70,7 @@ namespace WebApp2Prosjekt.Controllers
 
         public IActionResult SeeProfile()
         {
-            return View(_repository.GetEditProfileViewModel(User.Identity.Name));
+            return View(_repository.GetEditProfileViewModel(User.Identity.Name).Result);
         }
 
         [HttpPost]

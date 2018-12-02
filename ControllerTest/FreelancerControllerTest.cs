@@ -44,7 +44,7 @@ namespace ControllerTesting
 
             Assert.IsNotNull(res);
             _repository.Verify(x => x.GetDevelopersTasks(It.IsAny<string>()), Times.Exactly(1));
-            Assert.IsInstanceOfType(res.Model, typeof(Task<List<Tasks>>));
+            Assert.IsInstanceOfType(res.Model, typeof(List<Tasks>));
         }
 
         [TestMethod]
@@ -167,7 +167,7 @@ namespace ControllerTesting
 
             Assert.IsNotNull(res);
             _repository.Verify(x => x.GetEditProfileViewModel(It.IsAny<string>()), Times.Exactly(1));
-            Assert.IsInstanceOfType(res.Model, typeof(Task<EditProfileViewModel>));
+            Assert.IsInstanceOfType(res.Model, typeof(EditProfileViewModel));
         }
 
         [TestMethod]
