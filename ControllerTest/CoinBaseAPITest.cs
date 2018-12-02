@@ -25,7 +25,7 @@ namespace CoinBaseAPITesting
         }
 
         [TestMethod]
-        public async Task can_create_authorization_url()
+        public async Task Can_create_authorization_url()
         {
             var opts = new AuthorizeOptions
             {
@@ -47,7 +47,7 @@ namespace CoinBaseAPITesting
         }
 
         [TestMethod]
-        public async Task can_revoke_token()
+        public async Task Can_revoke_token()
         {
             server.RespondWith("");
 
