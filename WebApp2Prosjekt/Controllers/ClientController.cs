@@ -51,7 +51,7 @@ namespace WebApp2Prosjekt.Controllers
         //May be redundant
         public IActionResult PayForTask()
         {
-            IEnumerable<Tasks> tasks = _repository.GetAllTasks(User.Identity.Name);
+            IEnumerable<Tasks> tasks = _repository.getPaymentTask(User.Identity.Name).Result;
             return View(tasks);
         }
     }
