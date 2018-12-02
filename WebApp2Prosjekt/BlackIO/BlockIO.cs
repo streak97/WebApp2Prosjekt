@@ -11,16 +11,14 @@ namespace WebApp2Prosjekt.BlackIO
     public class BlockIO
     {
         private string ApiKey { get; set; }
-        private string Url = "https://block.io/api/v2/";
-        private string Status;
-        private Dictionary<string, object> Data;
+        private readonly string Url = "https://block.io/api/v2/";
 
         public BlockIO(string apiKey)
         {
             this.ApiKey = apiKey;
         }
 
-        private JSONAPI wallet_API(string method, NameValueCollection parameters)
+        private JSONAPI Wallet_API(string method, NameValueCollection parameters)
         {
             WebClient Client = new WebClient();
             Uri url = new Uri(Url + method + "/");
@@ -55,38 +53,38 @@ namespace WebApp2Prosjekt.BlackIO
             return json;
         }
 
-        public JSONAPI getNewAddress()
+        public JSONAPI GetNewAddress()
         {
             NameValueCollection Params = System.Web.HttpUtility.ParseQueryString(string.Empty);
-            return wallet_API("get_new_address", Params);
+            return Wallet_API("get_new_address", Params);
         }
 
-        public JSONAPI getBalance()
+        public JSONAPI GetBalance()
         {
             NameValueCollection Params = System.Web.HttpUtility.ParseQueryString(string.Empty);
-            return wallet_API("get_balance", Params);
+            return Wallet_API("get_balance", Params);
         }
 
-        public JSONAPI getMyAddresses()
+        public JSONAPI GetMyAddresses()
         {
             NameValueCollection Params = System.Web.HttpUtility.ParseQueryString(string.Empty);
-            return wallet_API("get_my_addresses", Params);
+            return Wallet_API("get_my_addresses", Params);
         }
 
-        public JSONAPI getCurrentPrices()
+        public JSONAPI GetCurrentPrices()
         {
             NameValueCollection Params = System.Web.HttpUtility.ParseQueryString(string.Empty);
-            return wallet_API("get_current_prices", Params);
+            return Wallet_API("get_current_prices", Params);
         }
 
-        public JSONAPI getTransactions(string type)
+        public JSONAPI GetTransactions(string type)
         {
             NameValueCollection Params = System.Web.HttpUtility.ParseQueryString(string.Empty);
             Params.Add("type", type);
-            return wallet_API("get_transactions", Params);
+            return Wallet_API("get_transactions", Params);
         }
 
-        public JSONAPI withdraw(string amounts, string addresses, string pin)
+        public JSONAPI Withdraw(string amounts, string addresses, string pin)
         {
             NameValueCollection Params = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
@@ -94,7 +92,7 @@ namespace WebApp2Prosjekt.BlackIO
             Params.Add("to_addresses", addresses);
             Params.Add("pin", pin);
 
-            return wallet_API("withdraw", Params);
+            return Wallet_API("withdraw", Params);
         }
     }
 }

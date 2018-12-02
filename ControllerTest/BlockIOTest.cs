@@ -8,67 +8,67 @@ namespace BlockIOTesting
     {
 
         [TestMethod]
-        public void can_getNewAddress()
+        public void Can_getNewAddress()
         {
             string apiKey = "bb7c-fc4a-42a2-cf6e";
             BlockIO blockio = new BlockIO(apiKey);
 
-            JSONAPI json = blockio.getNewAddress();
+            JSONAPI json = blockio.GetNewAddress();
 
             Assert.AreEqual("success", json.Status);
         }
 
         [TestMethod]
-        public void can_getBalance()
+        public void Can_getBalance()
         {
             string apiKey = "bb7c-fc4a-42a2-cf6e";
             BlockIO blockio = new BlockIO(apiKey);
 
-            JSONAPI json = blockio.getBalance();
+            JSONAPI json = blockio.GetBalance();
 
             Assert.AreEqual("success", json.Status);
         }
 
         [TestMethod]
-        public void can_getMyAddresses()
+        public void Can_getMyAddresses()
         {
             string apiKey = "bb7c-fc4a-42a2-cf6e";
             BlockIO blockio = new BlockIO(apiKey);
 
-            JSONAPI json = blockio.getMyAddresses();
+            JSONAPI json = blockio.GetMyAddresses();
 
             Assert.AreEqual("success", json.Status);
         }
 
         [TestMethod]
-        public void can_getCurrentPrices()
+        public void Can_getCurrentPrices()
         {
             string apiKey = "bb7c-fc4a-42a2-cf6e";
             BlockIO blockio = new BlockIO(apiKey);
 
-            JSONAPI json = blockio.getCurrentPrices();
+            JSONAPI json = blockio.GetCurrentPrices();
 
             Assert.AreEqual("success", json.Status);
         }
 
         [TestMethod]
-        public void can_getTransactionsSent()
+        public void Can_getTransactionsSent()
         {
             string apiKey = "bb7c-fc4a-42a2-cf6e";
             BlockIO blockio = new BlockIO(apiKey);
 
-            JSONAPI json = blockio.getTransactions("sent");
+            JSONAPI json = blockio.GetTransactions("sent");
 
             Assert.AreEqual("success", json.Status);
         }
 
         [TestMethod]
-        public void can_getTransactionsReceived()
+        public void Can_getTransactionsReceived()
         {
             string apiKey = "bb7c-fc4a-42a2-cf6e";
             BlockIO blockio = new BlockIO(apiKey);
 
-            JSONAPI json = blockio.getTransactions("received");
+            JSONAPI json = blockio.GetTransactions("received");
 
             Assert.AreEqual("success", json.Status);
         }
