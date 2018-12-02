@@ -15,7 +15,7 @@ namespace WebApp2Prosjekt.Controllers
     [Authorize(Policy = "TaskAccess")]
     public class FreelancerController : Controller
     {
-        private IDeveloperRepository _repository;
+        private readonly IDeveloperRepository _repository;
 
         public FreelancerController(IDeveloperRepository repository)
         {

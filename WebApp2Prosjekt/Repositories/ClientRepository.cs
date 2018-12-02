@@ -57,10 +57,11 @@ namespace WebApp2Prosjekt.Repositories
 
         public async Task<CreateTaskViewModel> GetCreateTaskViewModel()
         {
-            CreateTaskViewModel ctvm = new CreateTaskViewModel();
-
-            ctvm.SpecialityFields = _context.SpecialityFields.ToList();
-            ctvm.Developers = (List<IdentityUser>)await _userManager.GetUsersInRoleAsync("Freelancer");
+            CreateTaskViewModel ctvm = new CreateTaskViewModel
+            {
+                SpecialityFields = _context.SpecialityFields.ToList(),
+                Developers = (List<IdentityUser>)await _userManager.GetUsersInRoleAsync("Freelancer")
+            };
             ctvm.Developers.AddRange((List<IdentityUser>)await _userManager.GetUsersInRoleAsync("Developer"));
 
             return ctvm;
