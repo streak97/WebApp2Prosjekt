@@ -15,7 +15,7 @@ namespace WebApp2Prosjekt.Controllers
     [Authorize(Policy = "DeveloperAccess")]
     public class DeveloperController : Controller
     {
-        private IDeveloperRepository _repository;
+        private readonly IDeveloperRepository _repository;
 
         public DeveloperController(IDeveloperRepository repository)
         {

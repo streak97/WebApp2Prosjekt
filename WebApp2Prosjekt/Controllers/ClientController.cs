@@ -16,7 +16,7 @@ namespace WebApp2Prosjekt.Controllers
     [Authorize(Policy = "ClientAccess")]
     public class ClientController : Controller
     {
-        private IClientRepository _repository;
+        private readonly IClientRepository _repository;
 
         public ClientController(IClientRepository repository)
         {
