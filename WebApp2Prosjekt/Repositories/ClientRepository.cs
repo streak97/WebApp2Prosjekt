@@ -52,7 +52,7 @@ namespace WebApp2Prosjekt.Repositories
 
         public List<Tasks> GetAllTasks(string username)
         {
-            throw new NotImplementedException();
+            return _context.Tasks.Where(x => x.Freelancer.UserName == username).ToList();
         }
 
         public async Task<CreateTaskViewModel> GetCreateTaskViewModel()

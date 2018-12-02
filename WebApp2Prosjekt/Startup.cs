@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using WebApp2Prosjekt.Repositories;
 
 namespace WebApp2Prosjekt
 {
@@ -63,7 +64,9 @@ namespace WebApp2Prosjekt
                 config.Filters.Add(new AuthorizeFilter(policy));
             })
        .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
+            
+            services.AddTransient<IClientRepository, ClientRepository>();
+            services.AddTransient<IDeveloperRepository, DeveloperRepository>();
             // Add application services.
             services.AddMvc();
         }
