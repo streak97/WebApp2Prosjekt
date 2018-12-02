@@ -125,9 +125,7 @@ namespace WebApp2Prosjekt.Repositories
 
             task.Title = etvm.Title;
             task.Description = etvm.Description;
-            task.SpecialityFieldId = etvm.SpecialityFieldId;
-
-            task.Complete = etvm.Complete;
+            
             task.Lines = etvm.Lines;
 
             _context.SaveChanges();
