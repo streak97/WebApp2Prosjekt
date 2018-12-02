@@ -50,7 +50,7 @@ namespace WebApp2Prosjekt.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateTask([Bind("TasksId, Title, Description, SpecialityFieldId, Complete, Lines")]EditTaskViewModel etvm)
+        public IActionResult UpdateTask([Bind("TasksId, Lines")]EditTaskViewModel etvm)
         {
             try
             {
