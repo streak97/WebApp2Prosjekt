@@ -45,6 +45,14 @@ namespace WebApp2Prosjekt.Repositories
 
         }
 
+        public async Task<List<Tasks>> getPaymentTask(string username)
+        {
+            var clientUser = await _userManager.FindByNameAsync(username);
+            List<Tasks> list = _context.Tasks.Where(x => !x.Paid && x.Complete && x.Client.UserName == username).ToList();
+
+            return list;
+        }
+
         public void EditTask(CreateTaskViewModel ctvm)
         {
             throw new NotImplementedException();
